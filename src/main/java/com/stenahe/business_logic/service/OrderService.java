@@ -5,6 +5,7 @@ import com.stenahe.business_logic.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class OrderService {
     private List<Product> mockProducts = new ArrayList<>();
@@ -19,8 +20,20 @@ public class OrderService {
         mockOrders.add(new Order("1002", List.of(mockProducts.get(2))));
     }
 
+    public List<Product> getProducts() {
+        return mockProducts;
+    }
+
     public List<Order> getAllOrders() {
         return mockOrders;
+    }
+
+    public void addProduct(Product product) {
+        mockProducts.add(product);
+    }
+
+    public void addOrder(String orderId, ArrayList<Product> products) {
+        mockOrders.add(new Order(orderId, products));
     }
 
     public double calculateTotalPrice(String orderId) {
